@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Административная панель</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-item" data-section="Мой профиль">
+            <span class="material-icons">person</span> Мой профиль
+        </div>
+        <div class="sidebar-item" data-section="Документы для заполнения">
+            <span class="material-icons">assignment</span> Документы для заполнения
+        </div>
+        <div class="sidebar-item" data-section="Заполненные документы">
+            <span class="material-icons">assignment_turned_in</span> Заполненные документы
+            <div id="download-link" style="display:none;">
+                <a href="/download-filled-document" target="_blank">Скачать заполненный документ</a>
+            </div>
+        </div>
+        <div class="sidebar-item" data-section="Настройки">
+            <span class="material-icons">settings</span> Настройки
+        </div>
+        <div class="sidebar-item logout" data-section="Выход из системы">
+            <span href="../" class="material-icons">exit_to_app</span> Выход из системы
+        </div>
+    </div>
+    <div class="main-content">
+        <h1>Добро пожаловать!</h1>
+        <p>Выберите опцию в меню для начала работы.</p>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+        // Проверка параметров URL для отображения сообщения об успехе
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            document.getElementById('status-message').innerText = 'Данные успешно обработаны и сохранены.';
+            document.getElementById('download-link').style.display = 'block';
+        }
+    </script>
+
+</body>
+
+</html>

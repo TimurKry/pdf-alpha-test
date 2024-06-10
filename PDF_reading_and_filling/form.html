@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title>Registration Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Подключение Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+
+    <div class="container">
+        <form id="myForm" class="col s12" action="/submit-form" method="post">
+            <!---Карточка 1 -->
+            <div class="card step" id="step1">
+                <div class="card-content">
+                    <span class="card-title">Основная информация</span>
+                    <p>
+                        <label>
+                            <input type="radio" id="male" name="gender" value="männlich">
+                            <span>Мужской</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="female" name="gender" value="weiblich">
+                            <span>Женский</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="diverse" name="gender" value="divers">
+                            <span>Другое</span>
+                        </label>
+                    </p>
+                    <div class="input-field">
+                        <input id="name" name="name" type="text" class="validate" required>
+                        <label for="name">Имя</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="surname" name="surname" type="text" class="validate" required>
+                        <label for="surname">Фамилия</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="birthSurname" name="birthSurname" type="text" class="validate">
+                        <label for="birthSurname">Фамилия при рождении</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="birthdate" name="birthdate" type="date" class="validate" required>
+                        <label for="birthdate">Дата рождения</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="birthCity" name="birthCity" type="text" class="validate" required>
+                        <label for="birthCity">Город рождения</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="birthCountry" name="birthCountry" type="text" class="validate" required>
+                        <label for="birthCountry">Страна рождения</label>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                </div>
+            </div>
+
+            <!---Карточка 2 -->
+            <div class="card step" id="step2" style="display:none;">
+                <div class="card-content">
+                    <span class="card-title">Информация о месте жительства</span>
+                    <div class="input-field">
+                        <label for="address">Улица:</label>
+                        <input type="text" id="address" name="address" required><br><br>
+                    </div>
+                    <div class="input-field">
+                        <label for="house_number">Номер дома:</label>
+                        <input type="number" id="house_number" name="house_number" required><br><br>
+                    </div>
+                    <div class="input-field">
+                        <label for="postalCode">Почтовый индекс:</label>
+                        <input type="text" id="postalCode" name="postalCode" required><br><br>
+                    </div>
+                    <div class="input-field">
+                        <label for="city">Город:</label>
+                        <input type="text" id="city" name="city" required><br><br>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                    <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                </div>
+            </div>
+
+            <!---Карточка 3 -->
+            <div class="card step" id="step3" style="display:none;">
+                <div class="card-content">
+                    <span class="card-title">Информация</span>
+                    <div class="input-field">
+                        <input type="text" id="rentenNum" name="rentenNum" pattern="^\d{2} \d{6} [A-Z] \d{2} \d$" title="Формат: 66 150872 P 08 0">
+                        <label for="rentenNum">Номер пенсионного страхования (Rentenversicherungsnummer)</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="steuerId" name="steuerId" pattern="\d{11}" title="Введите 11 цифр без пробелов">
+                        <label for="steuerId">Идентификационный номер налогоплательщика, если известен</label>
+                    </div>
+                    <div class="input-field">
+                        <label for="email">Электронная почта:</label>
+                        <input type="email" id="email" name="email" required><br><br>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="mobil">Мобильный телефон (только немецкий номер 0-XXX-XXX-XXX-X):</label>
+                        <input type="text" id="mobil" name="mobil" pattern="\d{10}" title="Введите 10 цифр без пробелов">
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                    <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                </div>
+            </div>
+
+            <!---Карточка 4 -->
+            <div class="card step" id="step4" style="display:none;">
+                <div class="card-content">
+                    <span class="card-title">Основная информация</span>
+                    <p>
+                        <label>
+                            <input type="radio" id="married" name="familyStatus" value="married">
+                            <span>Женат/Замужем</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label />
+                        <input type="radio" id="single" name="familyStatus" value="single">
+                        <span>Не женат/Не замужем</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="divorced" name="familyStatus" value="divorced">
+                            <span>Разведен(а)</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="widowed" name="familyStatus" value="widowed" />
+                            <span>Вдовец/Вдова</span>
+                        </label>
+                    </p>
+
+                    <div class="input-field">
+                        <label for="Datum3_af_date">С какого времени вы в таком статусе:</label>
+                        <input type="text" id="Datum3_af_date" name="Datum3_af_date">
+                    </div>
+
+                    <div class="input-field">
+                        <label for="versichertenNummer">Versichertennummer:</label>
+                        <input type="text" id="versichertenNummer" name="versichertenNummer" pattern="\d{10}" title="Versichertennummer sollte aus 10 Ziffern bestehen">
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                    <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                </div>
+            </div>
+
+            <!---Карточка 5 -->
+            <div class="card step" id="step5" style="display:none;">
+                <div class="card-content">
+                    <span class="card-title">Основная информация</span>
+                    <span>У вас есть дети?</span>
+                    <p>
+                        <label>
+                            <input type="radio" id="childrenYes" name="children" value="ja" onchange="toggleFileUpload(true)">
+                            <span>Да</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="childrenNo" name="children" value="nein" onchange="toggleFileUpload(false)">
+                            <span>Нет</span>
+                        </label>
+                    <div id="fileUpload" style="display:none;">
+                        <label for="childrenDocuments">Пожалуйста, прикрепите свидетельства о рождении:</label>
+                        <input type="file" id="childrenDocuments" name="childrenDocuments" multiple accept=".pdf,.jpg,.png">
+                    </div>
+                    </p>
+
+                    <div class="input-field">
+                        <p>
+                            <label>
+                                <label>Члены семьи также должны быть застрахованы</label>
+                                <input type="checkbox" id="familyInsured" name="familyInsured" value="yes">
+                                <span>Да</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="input-field">
+                        <p>Mein/-e Ehe-/Lebenspartner/-in gem. LPartG ist:</p>
+                        <p>
+                            <label>
+                                <input name="insuranceType" type="radio" value="gesetzlich" onclick="toggleInsuranceCompanyField(true)" />
+                                <span>gesetzlich krankenversichert</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="insuranceType" type="radio" value="privat" onclick="toggleInsuranceCompanyField(true)" />
+                                <span>privat krankenversichert</span>
+                            </label>
+                        </p>
+
+                        <div id="insuranceCompanyName" style="display:none;">
+                            <div class="input-field">
+                                <input id="insuranceCompany" name="insuranceCompany" type="text" class="validate">
+                                <label for="insuranceCompany">krankenversichert bei:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                        <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!---Карточка 6 -->
+            <div class="card step" id="step6" style="display:none;">
+                <div class="card-content">
+                    <span class="card-title">Основная информация о мед.страховании</span>
+                    <div class="input-field">
+                        <input id="yourinsuranceCompany" name="yourinsuranceCompany" type="text" class="validate">
+                        <label for="yourinsuranceCompany">Название вашей прошлой медицинской страховой компании:</label>
+                    </div>
+
+                    <span>Какой тип страхования у вас был?</span>
+                    <p>
+                        <label>
+                            <input type="radio" id="versicherungsartSelbstVersichert" name="versicherungsart" value="selbst_versichert">
+                            <span>самозастрахован (selbst versichert)</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="versicherungsartFamilienVersichert" name="versicherungsart" value="familien_versichert">
+                            <span>семейная страховка (familienversichert)</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="versicherungsartPrivatVersichert" name="versicherungsart" value="privat_versichert">
+                            <span>Частная страховка (privat versichert)</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="versicherungsartImAuslandVersichert" name="versicherungsart" value="Ausland_versichert">
+                            <span> Был/Была застрахован за рубежом (im Ausland versichert)</span>
+                        </label>
+                    </p>
+                    <div class="input-field">
+                        <p>Вы были застрахованы по тому же адресу, который вы уже вводили?</p>
+                        <p>
+                            <label>
+                                <input name="addressOfOldInsurance" type="radio" value="yes" onclick="toggleInsuranceOldAdress(false)" />
+                                <span>Да, использовать адрес введённый ранее</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="addressOfOldInsurance" type="radio" value="no" onclick="toggleInsuranceOldAdress(true)" />
+                                <span>Нет, ввести новый</span>
+                            </label>
+                        </p>
+
+                        <div id="toggleInsuranceOldAdress" style="display:none;">
+                            <span>Введите ваш предыдущий адрес по которому вы были застрахованы:</span>
+                            <div class="input-field">
+                                <div class="input-field">
+                                    <label for="address2">Улица:</label>
+                                    <input type="text" id="address2" name="address2" required><br><br>
+                                </div>
+                                <div class="input-field">
+                                    <label for="house_number2">Номер дома:</label>
+                                    <input type="number" id="house_number2" name="house_number2" required><br><br>
+                                </div>
+                                <div class="input-field">
+                                    <label for="postalCode2">Почтовый индекс:</label>
+                                    <input type="text" id="postalCode2" name="postalCode2" required><br><br>
+                                </div>
+                                <div class="input-field">
+                                    <label for="city2">Город:</label>
+                                    <input type="text" id="city2" name="city2" required><br><br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card-action">
+                            <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                            <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!---Карточка 7 -->
+            <div class="card step" id="step7" style="display:none;">
+                <div class="card-content">
+                    <span>Выберите ваш статус занятости:</span>
+                    <p>
+                        <label>
+                            <input type="radio" id="ichBinArbeitnehmer" name="ichBin" value="Arbeitnehmer" onchange="toggleLeistungsbezieherinFileUpload(false)
+                             toggleSozialgeldbezieherinFileUpload(false)
+                             toggleArbeitnehmer(true)
+                             toggleSelbststandig(false)">
+                            <span>Сотрудник</span>
+                            <div id="Arbeitnehmer" style="display:none;">
+                                <label>
+                                    <input type="checkbox" id="incomeLimitCheckbox" name="incomeLimit" value="yes" />
+                                    <span>Mein Einkommen liegt über der Jahresarbeitsentgeltgrenze</span>
+                                </label>
+                                <a class="tooltipped" data-position="right" data-tooltip="Это означает, что ваш годовой доход превышает установленный государством предел, что влияет на вашу страховую категорию.">
+                                    <i class="material-icons">help_outline</i>
+                                </a>
+                                <br><br>
+                                <span>Введите данные о вашем работодателе:</span>
+                                <div class="input-field">
+                                    <div class="input-field">
+                                        <label for="arbeitgeber">Pаботодатель/Название фирмы:</label>
+                                        <input type="text" id="arbeitgeber" name="arbeitgeber" required><br><br>
+                                    </div>
+                                    <span>Адрес вашей работы:</span>
+                                    <div class="input-field">
+                                        <label for="address3">Улица:</label>
+                                        <input type="text" id="address3" name="address3" required><br><br>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="house_number3">Номер дома:</label>
+                                        <input type="number" id="house_number3" name="house_number3" required><br><br>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="postalCode3">Почтовый индекс:</label>
+                                        <input type="text" id="postalCode3" name="postalCode3" required><br><br>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="city3">Город:</label>
+                                        <input type="text" id="city3" name="city3" required><br><br>
+                                    </div>
+                                </div>
+                                <label>
+                                    <input type="checkbox" id="self_mployed" name="self_employed" value="yes" onchange="toggleSelbststandig(true)" />
+                                    <span>Я так же являюсь самозанятым/-ой</span>
+                                </label>
+                                <br><br>
+                            </div>
+
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="ichBinSelbststandig" name="ichBin" value="Selbststandig" onchange="toggleLeistungsbezieherinFileUpload(false)
+                             toggleSozialgeldbezieherinFileUpload(false)
+                             toggleArbeitnehmer(false)
+                             toggleSelbststandig(true)">
+                            <span>Самозанятый</span>
+                            <div id="Selbststandig" style="display:none;">
+                                <label>
+                                    <input id="busnesStartDate" name="busnesStartDate" type="date" class="validate" required>
+                                    <label for="busnesStartDate">Cамозанятый с</label>
+                                </label>
+                                <label>
+                                    <input id="arbeitszeit" name="arbeitszeit" type="number">
+                                    <label for="arbeitszeit">Сколько часов в неделю вы работаете</label>
+                                </label>
+                                <br>
+                                <label>
+                                    <span>Вы получаете субсидию на начальный этап</span>
+                                    <p>
+                                        <label>
+                                            <input name="grundungszuschuss" type="radio" value="yes" onclick="toggleGrundungszuschuss(true)" />
+                                            <span>Да, я прикладываю сообветствующий документ</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                            <input name="grundungszuschuss" type="radio" value="no" onclick="toggleGrundungszuschuss(false)" />
+                                            <span>Нет</span>
+                                        </label>
+                                    </p>
+                                    <div id="Grundungszuschuss" style="display:none;">
+                                        <label for="GrundungszuschussDocuments">Пожалуйста, прикрепите соответствующий файл:</label>
+                                        <input type="file" id="GrundungszuschussDocuments" name="GrundungszuschussDocuments" multiple accept=".pdf,.jpg,.png">
+                                    </div>
+                                </label>
+                                <br>
+                                <p>Медицинское страхование должно быть:</p>
+                                <p>
+                                    <label>
+                                        <input name="krankengeld" type="radio" value="ohne" />
+                                        <span>Без права на пособие по болезни</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="krankengeld" type="radio" value="mit" />
+                                        <span>С правом на установленное законом пособие по болезни</span>
+                                    </label>
+                                </p>
+                                <br>
+                                <p>Мой годовой доход:</p>
+                                <p>
+                                    <label>
+                                        <input name="jahresGehalt" type="radio" value="mehr" onclick="toggleJahresGehalt(false)" />
+                                        <span>Превышает верхний предел взносов</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="jahresGehalt" type="radio" value="einkommensteuer" onclick="toggleJahresGehalt(true)" />
+                                        <span>Все доходы указаны в прилагаемом уведомлении о начислении подоходного налога</span>
+                                    </label>
+                                </p>
+                                <div id="jahresGehalt" style="display:none;">
+                                    <label for="jahresGehaltDocuments">Пожалуйста, прикрепите соответствующий файл:</label>
+                                    <input type="file" id="jahresGehaltDocuments" name="jahresGehaltDocuments" multiple accept=".pdf,.jpg,.png">
+                                </div>
+                                <br>
+                                <p>Вы являетесь:</p>
+                                <p>
+                                    <label>
+                                        <input name="DuBist" type="radio" value="Staatsbediensteter" onclick="toggleDuBist(true)" />
+                                        <span>Государственный служащий или лицо, имеющее право на льготы (пожалуйста, приложите справку о зарплате)</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="DuBist" type="radio" value="Student" onclick="toggleDuBist(true)" />
+                                        <span>Студент или ученик (пожалуйста, приложите справку об обучении/посещении школы)</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="DuBist" type="radio" value="Rentner" onclick="toggleDuBist(true)" />
+                                        <span>Пенсионер или лицо, претендующее на получение пенсии (пожалуйста, приложите пенсионное удостоверение)</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="DuBist" type="radio" value="Arbeitslose" onclick="toggleDuBist(false)" />
+                                        <span>Не имеющий занятия по найму</span>
+                                    </label>
+                                </p>
+                                <br>
+                                <div id="DuBist" style="display:none;">
+                                    <label for="DuBistDocuments">Пожалуйста, прикрепите соответствующий документ:</label>
+                                    <input type="file" id="DuBistDocuments" name="DuBistDocuments" multiple accept=".pdf,.jpg,.png">
+                                </div>
+                                <br>
+                            </div>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="ichBinSozialgeldbezieherin" name="ichBin" value="Sozialgeldbezieherin" onchange="toggleLeistungsbezieherinFileUpload(false)
+                             toggleSozialgeldbezieherinFileUpload(true)
+                             toggleArbeitnehmer(false)
+                             toggleSelbststandig(false)">
+                            <span>Получатель социальной поддержки</span>
+                            <div id="SozialgeldbezieherinFileUpload" style="display:none;">
+                                <label for="childrenDocuments">Пожалуйста, приложите уведомление о выплате пособия:</label>
+                                <input type="file" id="SozialgeldbezieherinDocuments" name="SozialgeldbezieherinDocuments" multiple accept=".pdf,.jpg,.png">
+                                <div id="KundennummerS">
+                                    <label for="kundennummerSozialgeldbezieherin">Kundennummer</label>
+                                    <input type="text" id="kundennummerSozialgeldbezieherin" name="kundennummerSozialgeldbezieherin"><br><br>
+                                </div>
+                            </div>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="ichBinLeistungsbezieherin" name="ichBin" value="Leistungsbezieherin" onchange="toggleSozialgeldbezieherinFileUpload(false)
+                            toggleLeistungsbezieherinFileUpload(true)
+                            toggleArbeitnehmer(false)
+                            toggleSelbststandig(false)">
+                            <span> Получатель пособия по безработице (Agentur für Arbeit/ARGE/Jobcenter)</span>
+                            <div id="LeistungsbezieherinFileUpload" style="display:none;">
+                                <label for="LeistungsbezieherinDocuments">Пожалуйста, приложите уведомление о выплате пособия:</label>
+                                <input type="file" id="LeistungsbezieherinDocuments" name="LeistungsbezieherinDocuments" multiple accept=".pdf,.jpg,.png">
+                                <div id="KundennummerL">
+                                    <label for="kundennummerLeistungsbezieherin">Kundennummer</label>
+                                    <input type="text" id="kundennummerLeistungsbezieherin" name="kundennummerLeistungsbezieherin"><br><br>
+                                </div>
+                            </div>
+                        </label>
+                    </p>
+
+                    <div class="card-action">
+                        <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                        <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!---Карточка 8 -->
+            <div class="card step" id="step8" style="display:none;">
+                <div class="card-content">
+                    <span class="card-title">Информация о взносах</span>
+                    <p>
+                        <label>
+                            <input type="radio" id="beitrage_selbst" name="beitrage" value="selbst">
+                            <span> Я буду перечислять сам/сама</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="beitrage_arbeitsgeber" name="beitrage" value="arbetsgeber">
+                            <span>Будет перечисляться моим работодателем</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="beitrage_SEPA" name="beitrage" value="SEPA">
+                            <span>Будут списываться по прямому дебетовому мандату SEPA Core до тех пор, пока не будут отменены (пожалуйста, заполните прямой дебетовый мандат SEPA Core)</span>
+                        </label>
+                    </p>
+
+                    <div class="input-field" style="display: none">
+                        <p>Дебетовый мандат SEPA Core</p>
+                        <div class="input-field">
+                            <label for="SEPA">SEPA:</label>
+                            <input type="text" id="SEPA" name="SEPA" required><br><br>
+                        </div>
+                    </div>
+
+                    <div class="card-action">
+                        <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                        <button type="button" class="btn waves-effect waves-light next-button">Next</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!---Карточка 9 -->
+            <div class="card step" id="step9" style="display:none;">
+                <div class="card-content">
+                    <span class="card-title">Подпись</span>
+                    <span>Если у нас возникнут вопросы, к кому нам обращаться? </span>
+                    <p>
+                        <label>
+                            <input type="radio" id="fragen_beantworten_mir" name="fragen_beantworten" value="selbst">
+                            <span> Ко мне</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="fragen_beantworten_vermittler" name="fragen_beantworten" value="vermittler">
+                            <span>К моему посреднику</span>
+                        </label>
+                    </p>
+                    <br>
+
+                    <div class="input-field">
+                        <span>Обязательно для заполнения</span>
+                        <p>
+                            <label>
+                                <label>Я хотел бы получать по электронной почте от компании BIG информационный бюллетень, опросы клиентов и информацию о результатах работы.ованы</label>
+                                <input type="checkbox" id="email_werbungen" name="email_werbungen" value="yes">
+                                <span>Да</span>
+                            </label>
+                        </p>
+                        <br>
+                        <p>
+                            <label>
+                                <label> Настоящим я даю согласие на хранение и обработку моих контактных данных. Мне известно, что я могу отозвать свое согласие в любое время</label>
+                                <input type="checkbox" id="bearbeitungsberechtigung" name="bearbeitungsberechtigung" value="yes">
+                                <span>Да</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="input-field">
+                        <label for="city4">Город из которого вы заполняете документ, дата добавится автоматически:</label>
+                        <input type="text" id="city4" name="city4" required><br><br>
+                    </div>
+
+                    <div class="card-action">
+                        <button type="button" class="btn waves-effect waves-light prev-button">Back</button>
+                        <button type="button" class="btn waves-effect waves-light next-button">Получить заполненый файл</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.tooltipped');
+            var instances = M.Tooltip.init(elems, {});
+        });
+    </script>
+    <script>
+        function toggleAddressInput(isChecked) {
+            const addressFields = document.getElementById('previousAddressFields');
+            if (isChecked) {
+                addressFields.classList.add('hidden');
+            } else {
+                addressFields.classList.remove('hidden');
+            }
+        }
+    </script>
+    <script>
+        document.getElementById('rentenNum').addEventListener('input', function (e) {
+            const pattern = /^\d{2} \d{6} [A-Z] \d{2} \d$/;
+            if (!pattern.test(e.target.value)) {
+                e.target.setCustomValidity("Введите номер в формате '66 150872 P 08 0'.");
+            } else {
+                e.target.setCustomValidity("");
+            }
+        });
+
+        document.getElementById('steuerId').addEventListener('input', function (e) {
+            const pattern = /^\d{11}$/;
+            if (!pattern.test(e.target.value)) {
+                e.target.setCustomValidity("Steuer-Identifikationsnummer должен содержать ровно 11 цифр.");
+            } else {
+                e.target.setCustomValidity("");
+            }
+        });
+
+        document.getElementById('myForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+
+            const vorwahl = document.getElementById('vorwahl').value.trim();
+            const mobil = document.getElementById('mobil').value.trim();
+
+            const telefon = `${vorwahl} ${mobil}`; // Объединяем значения в одну строку
+
+            // Добавляем скрытое поле в форму для передачи объединенного номера на сервер
+            const telefonInput = document.createElement('input');
+            telefonInput.setAttribute('type', 'hidden');
+            telefonInput.setAttribute('name', 'telefon');
+            telefonInput.setAttribute('value', telefon);
+            this.appendChild(telefonInput);
+
+            console.log(this);
+
+            this.submit(); // Отправляем форму
+        });
+
+
+        document.getElementById('mobil').addEventListener('input', function (e) {
+            const pattern = /^\d{11}$/;
+            if (!pattern.test(e.target.value)) {
+                e.target.setCustomValidity("Номер телефона должен содержать ровно 10 цифр.");
+            } else {
+                e.target.setCustomValidity("");
+            }
+        });
+
+        document.getElementById('versichertenNummer').addEventListener('input', function (e) {
+            const pattern = /^\d{10}$/;
+            if (!pattern.test(e.target.value)) {
+                e.target.setCustomValidity("Versichertennummer muss genau 10 Ziffern enthalten.");
+            } else {
+                e.target.setCustomValidity("");
+            }
+        });
+
+        function toggleFileUpload(show) {
+            document.getElementById('fileUpload').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleSozialgeldbezieherinFileUpload(show) {
+            document.getElementById('SozialgeldbezieherinFileUpload').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleLeistungsbezieherinFileUpload(show) {
+            document.getElementById('LeistungsbezieherinFileUpload').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleArbeitnehmer(show) {
+            document.getElementById('Arbeitnehmer').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleSelbststandig(show) {
+            document.getElementById('Selbststandig').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleGrundungszuschuss(show) {
+            document.getElementById('Grundungszuschuss').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleJahresGehalt(show) {
+            document.getElementById('jahresGehalt').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleDuBist(show) {
+            document.getElementById('DuBist').style.display = show ? 'block' : 'none';
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const steps = document.querySelectorAll('.step');
+            let currentStep = 0;
+
+            document.querySelectorAll('.next-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    if (currentStep < steps.length - 1) {
+                        steps[currentStep].style.display = 'none';
+                        currentStep++;
+                        steps[currentStep].style.display = 'block';
+                    } else {
+                        document.getElementById('myForm').submit();
+                    }
+                });
+            });
+
+            document.querySelectorAll('.prev-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    if (currentStep > 0) {
+                        steps[currentStep].style.display = 'none';
+                        currentStep--;
+                        steps[currentStep].style.display = 'block';
+                    }
+                });
+            });
+
+            function toggleInsuranceCompanyField(show) {
+                document.getElementById('insuranceCompanyName').style.display = show ? 'block' : 'none';
+            }
+
+            function toggleInsuranceOldAdress(show) {
+                document.getElementById('toggleInsuranceOldAdress').style.display = show ? 'block' : 'none';
+            }
+            window.toggleInsuranceOldAdress = toggleInsuranceOldAdress; // Делаем функцию глобально доступной
+            window.toggleInsuranceCompanyField = toggleInsuranceCompanyField; // Делаем функцию глобально доступной
+        });
+    </script>
+    <script>
+
+    </script>
+
+
+</body>
+
+</html>
