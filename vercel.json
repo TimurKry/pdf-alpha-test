@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "PDF_reading_and_filling/server.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "Home/**",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "Admin/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/Home/index.html"
+      },
+      {
+        "src": "/admin",
+        "dest": "/Admin/index.html"
+      },
+      {
+        "src": "/api/(.*)",
+        "dest": "/PDF_reading_and_filling/server.js"
+      }
+    ]
+  }
+  
