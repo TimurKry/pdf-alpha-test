@@ -36,10 +36,6 @@
         "dest": "/Admin/index.html"
       },
       {
-        "src": "/admin/(.*)",
-        "dest": "/Admin/$1"
-      },
-      {
         "src": "/form",
         "dest": "/PDF_reading_and_filling/form.html"
       },
