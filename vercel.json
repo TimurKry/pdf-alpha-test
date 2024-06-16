@@ -36,6 +36,10 @@
         "dest": "/Admin/index.html"
       },
       {
+        "src": "/form",
+        "dest": "/PDF_reading_and_filling/form.html"
+      },
+      {
         "src": "/api/(.*)",
         "dest": "/PDF_reading_and_filling/server.js"
       },
