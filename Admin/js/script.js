@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mainContent.addEventListener('click', function(event) {
         const card = event.target.closest('.document-link');
         if (card) {
-            window.location.href = '../form';
+            window.location.href = '../form.html';
             //window.location.href='http://localhost:3000/';
         }
     });
